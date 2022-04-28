@@ -1,7 +1,7 @@
 #! /bin/bash
 
 # You ned to add your own web-hook to line 5 inbetween the single quotes. Example:
-#
+#URL='https://discord.com/api/webhooks/931526008698012384/9PF5y2X8d55z064xaCavlXgMuF9cb9N42PrrNESrnIGc1L0znHyIZLfQRPFGPUtmyNAr'
 URL=''
 
 # Some colours that Discord uses in binray
