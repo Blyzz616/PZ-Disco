@@ -41,7 +41,7 @@ sudo chmod ug+x /usr/local/bin/boid/overseer.sh /usr/local/bin/boid/obit.sh
 
 Open overseer.sh in your favourite editor (nano/vim/etc) and paste in the overseer.sh stuff.
 
-**IMPORTANT:** You need to insert your own Discord Webhook at the top of the file.
+**IMPORTANT:** You need to insert your own Discord Webhook at the top of both the files.
 
 Save and close
 
