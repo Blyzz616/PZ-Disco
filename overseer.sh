@@ -1,6 +1,7 @@
 #! /bin/bash
 
-# You ned to add your own web-hook to the next line nbetween the single quotes
+# You ned to add your own web-hook to line 5 inbetween the single quotes. Example:
+#
 URL=''
 
 # Some colours that Discord uses in binray
