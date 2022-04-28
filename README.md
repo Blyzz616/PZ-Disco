@@ -10,9 +10,9 @@ This script should only be run AFTER the script that initiates the Zomboid serve
 
 _Running the scripts:_
 
-1: start zomboid server with start.sh
-2: start overseer.sh - AS ROOT
-3: start obit.sh - AS ROOT
+1. start zomboid server with start.sh
+2. start overseer.sh - AS ROOT
+3. start obit.sh - AS ROOT
 
 _File list:_
 
