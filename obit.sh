@@ -2,8 +2,7 @@
 
 RED=16711680
 
-# Line 7 needs to contain your Webhook URL in full. Next line is an example
-#URL='https://discord.com/api/webhooks/931526008698012384/9PF5y2X8d55z064xaCavlXgMuF9cb9N42PrrNESrnIGc1L0znHyIZLfQRPFGPUtmyNAr'
+# ADD YOUR DISCORD WEBHOOK URL TO THE NEXT LINE
 URL=''
 
 # Lets put in some funny death messages
