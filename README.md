@@ -62,8 +62,9 @@ Now save the start.sh file to your home directory (I've got mine in /home/boid/)
 You'll want to edit that one up too. There are 3 things in there that need editing:
 
 1. Add your Discord Webhook URL
-2. Change the server start-up message
-3. Change the SRVRINI variable to your own server settings name.
+2. Change line 104 in connect.sh **(trust me on this one)**
+3. Change the server start-up message
+4. Change the SRVRINI variable to your own server settings name.
 
 _Running the scripts:_
 
