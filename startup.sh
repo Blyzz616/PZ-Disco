@@ -85,6 +85,7 @@ READER(){
       MESSAGE="Server took $RISETIME to come online."
       curl -H "Content-Type: application/json" -X POST -d "{\"embeds\": [{ \"color\": \"$LIME\", \"title\": \"$TITLE\", \"description\": \"$MESSAGE\" }] }" $URL
       unset UPNOW
+      break
     fi
 
     ###### End of Server Start-up timer
