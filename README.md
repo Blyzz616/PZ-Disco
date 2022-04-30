@@ -101,3 +101,9 @@ If you have a monitor plugged into your server and you want to use it to watch t
 _Payoff:_
 
 Now join your Project Zomboid server and watch discord for all the glory.
+
+_Known bugs / To Do:_
+
+The join script is not working so nicely, it isn't displaying the user ping as it should be for some reason. I'll work on it at some point, but for right now, it is working well enough.
+- [ ] fix connect.sh so that pings are displayed correctly
+
