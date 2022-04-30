@@ -1,3 +1,6 @@
+
+![What the discord integration looks like](https://i.imgur.com/Xa4TcU1.jpeg)
+
 **# PZ-Disco**
 Discord integration for Project Zomboid
 
@@ -7,19 +10,22 @@ Obviously the OS needs to be Linux with Bourne Again Shell (BASH) and a few othe
 You'll also have to have your own Discord Server (or have admin rights to the server) to get a Webhook set up.
 This script assumes that you have installed the Zomboid server to the default location and the settings are in the /root/Zomboid/ subdirectories.
 
-This script should only be run AFTER the script that initiates the Zomboid server is run:
-
 _Running the scripts:_
 
-1. start zomboid server with start.sh
-2. start overseer.sh - **AS ROOT**
-3. start obit.sh - **AS ROOT**
+1. start zomboid server with start.sh **AS ROOT**
 
 _File list:_
 
-- start.sh - starts the server in a screen instance so that it will not be closed accidentally.
-- overseer.sh - reads the server output line per line and reacts accordingly.
-- obit.sh - read a different log file and puts in any deaths that happen on the server.
+- start.sh - starts the server in a screen instance so that it will not be closed accidentally
+- startup.sh - Announces when the server has finised starting up and can accept connections
+- connect.sh
+  - Announces when a player joins a server and keeps a record of it in /root/users.log (one line per user)
+  - Keeps a record of failed join attempts in /root/denied.log
+  - Keeps a record of when people joined the server in /root/access.log (one line per join)
+- discon.sh - Annonces when a player leaves the server both when they quit or lose conneciton
+- chopper.sh - Announces the different states of the chopper event (with some fun random messages)
+- obit.sh - read a different log file and puts in any deaths that happen on the server
+- shutdown.sh - Annonces when the server is being taken down with a server-up timer
 
 _Installation:_
 
@@ -27,40 +33,37 @@ Open a terminal to your server and make sure that all the dependencies are insta
 
 ```
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install curl screen sed awk grep tail
+sudo apt install curl screen sed grep
 ```
 
 All of these are installed by default on most distros.
-Now create the files for the scripts.
+Now create the directory for the scripts.
 
 ```
 sudo mkdir -p /user/local/bin/boid
-sudo touch /usr/local/bin/boid/overseer.sh /usr/local/bin/boid/obit.sh
-sudo chmod ug+x /usr/local/bin/boid/overseer.sh /usr/local/bin/boid/obit.sh
 ```
 
-Open overseer.sh in your favourite editor (nano/vim/etc) and paste in the overseer.sh stuff.
+All of the scripts except for start.sh go in there
 
-**IMPORTANT:** You need to insert your own Discord Webhook at the top of both the files.
+Be sure to set the permissions
 
-Save and close
+```
+chown root:root /usr/local/bin/boid/*.sh
+chmod ug+x /usr/local/bin/boid/*.sh
+```
 
-Then do the same for obit.sh
+**IMPORTANT:** You need to insert your own Discord Webhook at the top of _ALL_ of the files.
 
 Make sure that your Webhook has all the correct access to your Discord server
 
-To start the Zomboid server manually, I keep a script in /home/boid/, but you can have yours wherever you want. I also have a bunch of different server settings and use different scripts to start them.
+To start the Zomboid server manually, I keep the start.sh in /home/boid/, but you can have yours wherever you want. I also have a bunch of different server settings and use different scripts to start them. (slocan.sh to start the Slocan Lake map, and knox.sh to start the Knox county map etc)
 
-If you want to do it like me, you'll need to create a start.sh in your home directory
+Now save the start.sh file to your home directory (I've got mine in /home/boid/)
+You'll want to edit that one up too. There are 3 things in there that need editing:
 
-```
-touch ~/start.sh
-cd ~
-sudo chown root:root start.sh
-sudo chmod ug+x start.sh
-```
-
-Now copy, paste the start.sh code in there
+1. Add your Discord Webhook URL
+2. Change the server start-up message
+3. Change the SRVRINI variable to your own server settings name.
 
 _Running the scripts:_
 
@@ -69,9 +72,6 @@ Start your server
 ```
 cd ~
 sudo ./start.sh
-sudo cd /usr/local/bin/boid
-sudo ./obit.sh &
-sudo ./overseer.sh &
 ```
 
 **CAUTION!** Running multiple instances of these scripts WILL cause duplicated output in discord.
@@ -87,10 +87,9 @@ addthe following lines
 
 ```
 @reboot         /home/boid/start.sh > /dev/null 2
-@reboot         tail -Fn0 /root/Zomboid/server-console.txt
 ```
 
-If you have a monitor plugged into your server and you want to use it to watch the raw PZ output like me, change the 2nd line above to:
+If you have a monitor plugged into your server and you want to use it to watch the raw PZ output like me, add this line as well:
 
 ```
 @reboot         tail -Fn0 /root/Zomboid/server-console.txt > /dev/tty1
