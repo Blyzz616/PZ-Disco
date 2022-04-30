@@ -1,6 +1,6 @@
 #! /bin/bash
 
-URL='https://discord.com/api/webhooks/931522600658698280/9PF5Y2X8d55z06gxaCavlXgMuF9cb9Ne2PYrNESrnIGc1L0znHyIZLfQRPF7PUtmyNAr'
+URL=''
 
 PINK=16761035
 CRIMSON=14423100
