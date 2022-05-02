@@ -107,4 +107,4 @@ _Known bugs / To Do:_
 The join script is not working so nicely, it isn't displaying the user ping as it should be for some reason. I'll work on it at some point, but for right now, it is working well enough.
 - [ ] fix connect.sh so that pings are displayed correctly
 - [ ] Add per-user time logging (session/day/all-time
-- [ ] Do the above and figger out how to do it with per-server settigns
+- [ ] Do the above and 'figger out' how to do it with per-server settings
