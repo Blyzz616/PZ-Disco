@@ -62,10 +62,6 @@ READER(){
   tail -Fn0 /root/Zomboid/server-console.txt 2> /dev/null | \
   while read -r line ; do
 
-    ###########################################################################
-    ###### Server Start-Up Timer
-    ###########################################################################
-
     STARTVAR="SERVER STARTED"
     SRVRUP=$(echo "$line" | grep -E -c "$STARTVAR")
     if [[ "$SRVRUP" -gt "0" ]];
@@ -75,6 +71,10 @@ READER(){
       RISING=$(cat /tmp/srvr-start.time)
       RISEN=$(cat /tmp/srvr-up.time)
       RISESECS=$(( RISEN - RISING ))
+      SRVRNAME=$(ps aux | grep 'servername' | grep -v grep | grep Project | awk '{print $NF}')
+      touch /root/Zomboid/$SRVRNAME.up
+      echo "$(date +%c) $SRVRNAME RISESECS" >> /root/Zomboid/$SRVRNAME.up
+      
       if [[ $RISESECS -ge 60 ]];
       then
         RISETIME=$(printf '%dm %ds' $((RISESECS/60)) $((RISESECS%60)))
@@ -87,8 +87,6 @@ READER(){
       unset UPNOW
       break
     fi
-
-    ###### End of Server Start-up timer
 
   done
 
