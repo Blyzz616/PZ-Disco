@@ -5,14 +5,14 @@ import time
 # Replace this with your Discord webhook URL
 URL = ''
 
+# Insert the Zomboid directory here
+ZOMDIR = ''
+
 # Color constants
 DISCORDBLUE = 45015
 PURPLE = 8388736
 RED = 16711680
 CHARTREUSE = 8388352
-
-# Insert the Zomboid directory here
-ZOMDIR = ''
 
 def send_discord_message(color, title, description):
     data = {
