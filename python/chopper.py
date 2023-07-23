@@ -11,6 +11,9 @@ ORANGE = 16753920
 RED = 16711680
 CHARTREUSE = 8388352
 
+# Insert the Zomboid directory here
+ZOMDIR = ''
+
 # Chopper event messages
 CHOP_ACTIVE_MESSAGES = [
     'What was that?',
@@ -58,7 +61,7 @@ def send_discord_message(color, title, description):
 
 def reader():
     while True:
-        with open('/root/Zomboid/server-console.txt', 'r') as file:
+        with open('ZOMDIR/server-console.txt', 'r') as file:
             for line in file:
                 line = line.strip()
 
