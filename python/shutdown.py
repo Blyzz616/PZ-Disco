@@ -10,6 +10,9 @@ URL = ''
 # Color constants
 ORANGE = 16753920
 
+# Replace this with your Discord webhook URL
+URL = ''
+
 def send_discord_message(color, title, description):
     data = {
         'embeds': [{
@@ -47,7 +50,7 @@ def stop_monitoring_scripts():
 
 def reader():
     while True:
-        with open('/root/Zomboid/server-console.txt', 'r') as file:
+        with open('ZOMDIR/server-console.txt', 'r') as file:
             for line in file:
                 end_of_line = re.search(r'command\sentered\svia\sserver\sconsole\s\(System\.in\):\s\"quit\"', line)
                 if end_of_line:
