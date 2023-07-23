@@ -7,11 +7,11 @@ import subprocess
 # Replace this with your Discord webhook URL
 URL = ''
 
+# Insert the Zomboid directory here
+ZOMDIR = ''
+
 # Color constants
 ORANGE = 16753920
-
-# Replace this with your Discord webhook URL
-URL = ''
 
 def send_discord_message(color, title, description):
     data = {
