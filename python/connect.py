@@ -11,6 +11,9 @@ PURPLE = 8388736
 RED = 16711680
 CHARTREUSE = 8388352
 
+# Insert the Zomboid directory here
+ZOMDIR = ''
+
 def send_discord_message(color, title, description):
     data = {
         'embeds': [{
@@ -30,7 +33,7 @@ def read_steam_username(steam_id):
 
 def reader():
     while True:
-        with open('/root/Zomboid/server-console.txt', 'r') as file:
+        with open('ZOMDIR/server-console.txt', 'r') as file:
             for line in file:
                 line = line.strip()
 
@@ -49,14 +52,14 @@ def reader():
                     if steam_username:
                         message = f"[{steam_username}](https://steamcommunity.com/profiles/{steam_id}) attempted connection"
                         send_discord_message(PURPLE, "Steam user attempting connection:", message)
-                        with open('/root/access.log', 'a') as access_log:
+                        with open('ZOMDIR/access.log', 'a') as access_log:
                             access_log.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Steam user {steam_username} (https://steamcommunity.com/profiles/{steam_id}) attempted connection\n")
 
                 if CONN_AUTH_DENIED:
                     TITLE = "Access Denied - Check your credentials."
                     send_discord_message(RED, TITLE, '')
                     if steam_username:
-                        with open('/root/denied.log', 'a') as denied_log:
+                        with open('ZOMDIR/denied.log', 'a') as denied_log:
                             denied_log.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Steam user {steam_username} (https://steamcommunity.com/profiles/{steam_id}) was denied connection\n")
 
                 if CONN_PING_USER:
@@ -67,10 +70,10 @@ def reader():
                     BACK = f"Welcome back {user_name}!"
 
                     if steam_username:
-                        with open('/root/access.log', 'a') as access_log:
+                        with open('ZOMDIR/access.log', 'a') as access_log:
                             access_log.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - Steam user {steam_username} (https://steamcommunity.com/profiles/{steam_id}) completed connection with a ping of {ping_time} ms\n")
 
-                        with open('/root/users.log', 'a+') as users_log:
+                        with open('ZOMDIR/users.log', 'a+') as users_log:
                             if steam_id not in users_log.read():
                                 users_log.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} - New User (Steam Name: {steam_username}) joined the server for the first time as \"{user_name}\"\n")
                                 send_discord_message(CHARTREUSE, WELCOME, '')
