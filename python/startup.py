@@ -8,6 +8,9 @@ URL = ''
 # Color constant
 LIME = 65280
 
+# Replace this with your Discord webhook URL
+URL = ''
+
 def send_discord_message(color, title, description):
     data = {
         'embeds': [{
@@ -21,7 +24,7 @@ def send_discord_message(color, title, description):
 
 def server_started():
     start_var = "SERVER STARTED"
-    with open('/root/Zomboid/server-console.txt', 'r') as file:
+    with open(' ZOMDIR/server-console.txt', 'r') as file:
         for line in file:
             if re.search(start_var, line):
                 # Send timestamp to tmp file
@@ -35,7 +38,7 @@ def server_started():
 
                 # Assuming you have "servername" in the process name
                 server_name = os.popen("ps aux | grep 'servername' | grep -v grep | grep Project | awk '{print $NF}'").read().strip()
-                with open(f'/root/Zomboid/{server_name}.up', 'w') as server_up_file:
+                with open(f' ZOMDIR/{server_name}.up', 'w') as server_up_file:
                     server_up_file.write(f"{time.strftime('%c')} {server_name} {rise_secs}\n")
 
                 if rise_secs >= 60:
