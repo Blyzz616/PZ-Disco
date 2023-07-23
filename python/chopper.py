@@ -4,15 +4,14 @@ import random
 
 # Replace this with your Discord webhook URL
 URL = ''
+# Insert the Zomboid directory here
+ZOMDIR = ''
 
 # Color constants
 DISCORDBLUE = 45015
 ORANGE = 16753920
 RED = 16711680
 CHARTREUSE = 8388352
-
-# Insert the Zomboid directory here
-ZOMDIR = ''
 
 # Chopper event messages
 CHOP_ACTIVE_MESSAGES = [
