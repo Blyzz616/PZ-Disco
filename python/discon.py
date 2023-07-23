@@ -22,7 +22,7 @@ def send_discord_message(color, title, description):
 
 def reader():
     while True:
-        with open('/root/Zomboid/server-console.txt', 'r') as file:
+        with open('ZOMDIR/Zomboid/server-console.txt', 'r') as file:
             for line in file:
                 line = line.strip()
 
