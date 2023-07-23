@@ -7,11 +7,11 @@ import random
 # Replace this with your Discord webhook URL
 URL = ''
 
+# Insert the Zomboid directory here
+ZOMDIR = ''
+
 # Color constant
 RED = 16711680
-
-# Replace this with your Discord webhook URL
-URL = ''
 
 # Funny death messages
 RANDOS = [
