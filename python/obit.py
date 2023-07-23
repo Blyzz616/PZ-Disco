@@ -10,6 +10,9 @@ URL = ''
 # Color constant
 RED = 16711680
 
+# Replace this with your Discord webhook URL
+URL = ''
+
 # Funny death messages
 RANDOS = [
     'just died.', 'has now made their contribution to the horde.', 'swapped sides.',
@@ -31,12 +34,12 @@ def send_discord_message(color, description):
 def obituary():
     last_user_file = None
     while True:
-        user_files = sorted([file for file in os.listdir('ZOMDIR/Zomboid/Logs/') if file.startswith('user')], reverse=True)
+        user_files = sorted([file for file in os.listdir('ZOMDIR/Logs/') if file.startswith('user')], reverse=True)
         current_user_file = user_files[0] if user_files else None
 
         if last_user_file != current_user_file:
             if current_user_file:
-                with open(f'ZOMDIR/Zomboid/Logs/{current_user_file}', 'r') as file:
+                with open(f'ZOMDIR/Logs/{current_user_file}', 'r') as file:
                     for line in file:
                         dead_player = re.search(r'(\S+)\sdied', line)
                         if dead_player:
@@ -49,7 +52,7 @@ def obituary():
 
 def validate():
     while True:
-        user_files = [file for file in os.listdir('ZOMDIR/Zomboid/Logs/') if file.startswith('user')]
+        user_files = [file for file in os.listdir('ZOMDIR/Logs/') if file.startswith('user')]
         if not user_files:
             time.sleep(1)
         else:
