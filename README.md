@@ -8,13 +8,19 @@ Discord integration for Project Zomboid
 Ok, So this needs to be run on the instance that is running the Project Zomboid server.
 Obviously the OS needs to be Linux with Bourne Again Shell (BASH) and a few other dependencies, listed later.
 You'll also have to have your own Discord Server (or have admin rights to the server) to get a Webhook set up.
-This script assumes that you have installed the Zomboid server to the default location and the settings are in the /root/Zomboid/ subdirectories.
+The user that you use to install DisBoid should have sudo access.
 
-_Running the scripts:_
+_Running the script:_
 
-1. start zomboid server with start.sh **AS ROOT**
+Save the install-wizard.sh to your home directory, or wherever, and make sure that you set it so be execuable:
+
+```
+sudo chmod ug+x install-wizard.sh
+```
 
 _File list:_
+
+The install wizard creates more executable scripts in /opt/disboid/ and one (start.sh) which is created in your home folder these are described below
 
 - start.sh - starts the server in a screen instance so that it will not be closed accidentally
 - startup.sh - Announces when the server has finised starting up and can accept connections
@@ -33,38 +39,10 @@ Open a terminal to your server and make sure that all the dependencies are insta
 
 ```
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install curl screen sed grep
+sudo apt install curl screen sed grep whiptail
 ```
 
 All of these are installed by default on most distros.
-Now create the directory for the scripts.
-
-```
-sudo mkdir -p /user/local/bin/boid
-```
-
-All of the scripts except for start.sh go in there
-
-Be sure to set the permissions
-
-```
-chown root:root /usr/local/bin/boid/*.sh
-chmod ug+x /usr/local/bin/boid/*.sh
-```
-
-**IMPORTANT:** You need to insert your own Discord Webhook at the top of _ALL_ of the files.
-
-Make sure that your Webhook has all the correct access to your Discord server
-
-To start the Zomboid server manually, I keep the start.sh in /home/boid/, but you can have yours wherever you want. I also have a bunch of different server settings and use different scripts to start them. (slocan.sh to start the Slocan Lake map, and knox.sh to start the Knox county map etc)
-
-Now save the start.sh file to your home directory (I've got mine in /home/boid/)
-You'll want to edit that one up too. There are 3 things in there that need editing:
-
-1. Add your Discord Webhook URL
-2. Change line 104 in connect.sh **(trust me on this one)**
-3. Change the server start-up message
-4. Change the SRVRINI variable to your own server settings name.
 
 _Running the scripts:_
 
@@ -95,7 +73,6 @@ If you have a monitor plugged into your server and you want to use it to watch t
 ```
 @reboot         tail -Fn0 /root/Zomboid/server-console.txt > /dev/tty1
 ```
-
 
 
 _Payoff:_
