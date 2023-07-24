@@ -25,9 +25,9 @@ The install wizard creates more executable scripts in /opt/disboid/ and one (sta
 - start.sh - starts the server in a screen instance so that it will not be closed accidentally
 - startup.sh - Announces when the server has finised starting up and can accept connections
 - connect.sh
-  - Announces when a player joins a server and keeps a record of it in /root/users.log (one line per user)
-  - Keeps a record of failed join attempts in /root/denied.log
-  - Keeps a record of when people joined the server in /root/access.log (one line per join)
+  - Announces when a player joins a server and keeps a record of it in ../Zomboid/users.log (one line per user)
+  - Keeps a record of failed join attempts in ../Zomboid/denied.log
+  - Keeps a record of when people joined the server in ../Zomboid/access.log (one line per join)
 - discon.sh - Annonces when a player leaves the server both when they quit or lose conneciton
 - chopper.sh - Announces the different states of the chopper event (with some fun random messages)
 - obit.sh - read a different log file and puts in any deaths that happen on the server
@@ -43,6 +43,12 @@ sudo apt install curl screen sed grep whiptail
 ```
 
 All of these are installed by default on most distros.
+
+_Then run the wizard:_
+
+```
+./install-wizard.sh
+```
 
 _Running the scripts:_
 
@@ -71,7 +77,7 @@ addthe following lines
 If you have a monitor plugged into your server and you want to use it to watch the raw PZ output like me, add this line as well:
 
 ```
-@reboot         tail -Fn0 /root/Zomboid/server-console.txt > /dev/tty1
+@reboot         tail -Fn0 ~/Zomboid/server-console.txt > /dev/tty1
 ```
 
 
@@ -83,5 +89,6 @@ _Known bugs / To Do:_
 
 The join script is not working so nicely, it isn't displaying the user ping as it should be for some reason. I'll work on it at some point, but for right now, it is working well enough.
 - [ ] fix connect.sh so that pings are displayed correctly
+- [ ] Add [send "quit" to screen] for graceful shutdown
 - [ ] Add per-user time logging (session/day/all-time
 - [ ] Do the above and 'figger out' how to do it with per-server settings
