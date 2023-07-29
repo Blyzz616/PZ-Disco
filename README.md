@@ -89,6 +89,9 @@ _Known bugs / To Do:_
 
 The join script is not working so nicely, it isn't displaying the user ping as it should be for some reason. I'll work on it at some point, but for right now, it is working well enough.
 - [ ] fix connect.sh so that pings are displayed correctly
+- [ ] Wizard: add option to support multiple Zomboid servers
+- [ ] Wizard: add option to overwite old settings
+- [ ] Wizard: Ask if installer should advertise on Discord
 - [ ] Add [send "quit" to screen] for graceful shutdown
 - [ ] Add per-user time logging (session/day/all-time
 - [ ] Do the above and 'figger out' how to do it with per-server settings
